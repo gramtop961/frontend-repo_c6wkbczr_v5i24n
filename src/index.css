@@ -4,43 +4,31 @@
 
 @layer base {
   :root {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --font-geist: 'Geist', system-ui, sans-serif;
-    --font-geist-mono: 'Geist Mono', monospace;
-    --font-mona: 'Mona Sans', system-ui, sans-serif;
-    --font-ibm-plex: 'IBM Plex Sans', system-ui, sans-serif;
-    --font-manrope: 'Manrope', system-ui, sans-serif;
+    --color-primary: #252525;
+    --color-secondary: #fefefe;
+    --color-accent: #767f62;
+    --color-neutral: #f8f9fa;
   }
 
   html {
-    font-family: var(--font-sans);
+    font-family: 'Raleway', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-feature-settings: "rlig" 1, "calt" 1;
+    color: var(--color-primary);
+    background: var(--color-secondary);
   }
 
-  body {
-    @apply antialiased;
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: 'Bebas Neue', Arial, sans-serif;
+    letter-spacing: 0.5px;
   }
+
+  body { @apply antialiased; }
 }
 
-/* Custom utility classes for shadcn/ui patterns */
-@layer utilities {
-  .animate-in {
-    animation-name: animateIn;
-    animation-duration: 350ms;
-    --tw-enter-opacity: initial;
-    --tw-enter-scale: initial;
-    --tw-enter-rotate: initial;
-    --tw-enter-translate-x: initial;
-    --tw-enter-translate-y: initial;
-  }
+/* Subtle animations */
+.fade-in { @apply opacity-0; animation: fadeIn 1s ease forwards; }
+.fade-in-delayed { @apply opacity-0; animation: fadeIn 1.2s ease 0.2s forwards; }
+.float-up { @apply opacity-0; animation: floatUp 1s ease forwards; }
 
-  .animate-out {
-    animation-name: animateOut;
-    animation-duration: 350ms;
-    --tw-exit-opacity: initial;
-    --tw-exit-scale: initial;
-    --tw-exit-rotate: initial;
-    --tw-exit-translate-x: initial;
-    --tw-exit-translate-y: initial;
-  }
-}
+@keyframes fadeIn { from { opacity: 0 } to { opacity: 1 } }
+@keyframes floatUp { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: translateY(0) } }
